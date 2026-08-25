@@ -5,7 +5,7 @@ import {
   LuSave, LuLogOut, LuCircleCheck, LuCircleAlert,
   LuUser, LuHash, LuPlane
 } from 'react-icons/lu';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/useAuth';
 import { getEmpresa, salvarEmpresa } from '../../services/empresaService';
 import Button from '../../components/ui/Button';
 import Input from '../../components/ui/Input';

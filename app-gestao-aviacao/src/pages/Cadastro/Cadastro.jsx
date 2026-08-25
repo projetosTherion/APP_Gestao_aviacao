@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { LuUser, LuMail, LuLock, LuCircleAlert, LuPlane } from 'react-icons/lu';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/useAuth';
 import BrandingPanel from '../../components/ui/BrandingPanel';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';
@@ -15,11 +15,9 @@ export default function Cadastro() {
   const {
     register,
     handleSubmit,
-    watch,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm();
-
-  const senhaAtual = watch('senha');
 
   const onSubmit = async (dados) => {
     setErroGeral('');
@@ -116,7 +114,7 @@ export default function Cadastro() {
               {...register('confirmarSenha', {
                 required: 'Confirme sua senha.',
                 validate: (val) =>
-                  val === senhaAtual || 'As senhas não coincidem.',
+                  val === getValues('senha') || 'As senhas não coincidem.',
               })}
             />
 

@@ -25,6 +25,9 @@ const getUsers = () => {
  */
 const generateToken = (userId) => `mock-token-${userId}-${Date.now()}`;
 
+const semSenha = (user) =>
+  Object.fromEntries(Object.entries(user).filter(([chave]) => chave !== 'senha'));
+
 // ─────────────────────────────────────────────
 // API pública do service
 // ─────────────────────────────────────────────
@@ -56,7 +59,7 @@ export const cadastrar = async ({ nome, email, senha }) => {
   localStorage.setItem(STORAGE_KEY_USERS, JSON.stringify([...users, novoUser]));
 
   const token = generateToken(novoUser.id);
-  const { senha: _, ...userSemSenha } = novoUser;
+  const userSemSenha = semSenha(novoUser);
 
   localStorage.setItem(STORAGE_KEY_TOKEN, token);
   localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(userSemSenha));
@@ -83,7 +86,7 @@ export const login = async ({ email, senha }) => {
   }
 
   const token = generateToken(user.id);
-  const { senha: _, ...userSemSenha } = user;
+  const userSemSenha = semSenha(user);
 
   localStorage.setItem(STORAGE_KEY_TOKEN, token);
   localStorage.setItem(STORAGE_KEY_USER, JSON.stringify(userSemSenha));
