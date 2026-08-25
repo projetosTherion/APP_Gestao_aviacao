@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 // Middlewares
-app.use(cors()); // libera acesso do frontend
+app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:5173' }));
 app.use(express.json()); // permite JSON no body
 
 // Porta configurável via .env

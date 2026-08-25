@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { LuMail, LuLock, LuCircleAlert, LuPlane } from 'react-icons/lu';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/useAuth';
 import BrandingPanel from '../../components/ui/BrandingPanel';
 import Input from '../../components/ui/Input';
 import Button from '../../components/ui/Button';

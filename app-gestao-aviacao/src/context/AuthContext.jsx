@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import {
   login as serviceLogin,
   cadastrar as serviceCadastrar,
@@ -15,19 +15,10 @@ const AuthContext = createContext(null);
 // Provider
 // ─────────────────────────────────────────────
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // começa true para checar sessão salva
-
-  // Ao montar, verifica se há sessão salva no localStorage
-  useEffect(() => {
-    const sessao = getSessaoSalva();
-    if (sessao) {
-      setUser(sessao.user);
-      setToken(sessao.token);
-    }
-    setIsLoading(false);
-  }, []);
+  const [sessaoInicial] = useState(() => getSessaoSalva());
+  const [user, setUser] = useState(sessaoInicial?.user ?? null);
+  const [token, setToken] = useState(sessaoInicial?.token ?? null);
+  const isLoading = false;
 
   /**
    * Autentica o usuário.
@@ -77,13 +68,4 @@ export function AuthProvider({ children }) {
   );
 }
 
-// ─────────────────────────────────────────────
-// Hook de consumo
-// ─────────────────────────────────────────────
-export function useAuth() {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
-  }
-  return context;
-}
+export { AuthContext };
