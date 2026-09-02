@@ -33,3 +33,15 @@ export function BadgeStatusPedido({ status }) {
   const { variant, label } = mapa[status] || { variant: 'neutral', label: status || '—' };
   return <Badge variant={variant}>{label}</Badge>;
 }
+ * Badge de status — reutilizável em todos os módulos.
+ *
+ * Props:
+ *   ativo  boolean
+ */
+export default function Badge({ ativo }) {
+  return (
+    <span className={`badge ${ativo ? "badge-ativo" : "badge-inativo"}`}>
+      {ativo ? "Ativo" : "Inativo"}
+    </span>
+  );
+}

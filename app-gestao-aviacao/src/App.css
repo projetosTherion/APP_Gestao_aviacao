@@ -1,1 +1,104 @@
 /* App.css — vazio. Estilos geridos pelo Tailwind e index.css */
+/* Layout principal */
+.app-layout {
+  display: flex;
+  min-height: 100svh;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  min-width: 220px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow-y: auto;
+}
+
+.sidebar-marca {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.sidebar-logo {
+  font-size: 1.375rem;
+}
+
+.sidebar-nome {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-h);
+  letter-spacing: -0.3px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0 0.75rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-link:hover {
+  background: var(--hover-bg);
+  color: var(--text-h);
+}
+
+.nav-link--ativo {
+  background: var(--accent-bg);
+  color: var(--accent);
+}
+
+/* ── Main ────────────────────────────────────────────────────────────────────── */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+/* ── Responsivo ──────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .nav-link {
+    white-space: nowrap;
+  }
+}

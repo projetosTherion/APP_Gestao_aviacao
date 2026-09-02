@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// CADASTROS MESTRES
+// ─────────────────────────────────────────────
+
+model Servico {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  descricao   String?
+  preco       Decimal  @db.Decimal(10, 2)
+  ativo       Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Sprint 3 — ao criar o model ItemPedido, descomentar:
+  // itensPedido ItemPedido[]
+
+  @@map("servicos")
+}
+
+// ─────────────────────────────────────────────
+// MÓDULO DE PEDIDOS (Sprint 3)
+// ─────────────────────────────────────────────
+//
+// model Pedido { ... }
+//
+// model ItemPedido {
+//   id             Int     @id @default(autoincrement())
+//   pedidoId       Int
+//   servicoId      Int
+//   quantidade     Int     @default(1)
+//   precoUnitario  Decimal @db.Decimal(10, 2) // snapshot do preco no momento do pedido
+//
+//   pedido  Pedido  @relation(fields: [pedidoId], references: [id])
+//   servico Servico @relation(fields: [servicoId], references: [id])
+//
+//   @@map("itens_pedido")
+// }

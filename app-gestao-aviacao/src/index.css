@@ -46,3 +46,191 @@
     background: #4B5563;
   }
 }
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* ─── Design Tokens — Modo Claro ────────────────────────────────────────────── */
+:root {
+  /* Paleta */
+  --accent:        #6366f1;
+  --accent-hover:  #4f52d4;
+  --accent-bg:     rgba(99, 102, 241, 0.1);
+  --accent-border: rgba(99, 102, 241, 0.35);
+
+  --danger:        #ef4444;
+  --success:       #22c55e;
+
+  /* Superfícies */
+  --bg:            #f8f8fc;
+  --card-bg:       #ffffff;
+  --sidebar-bg:    #ffffff;
+  --input-bg:      #ffffff;
+  --hover-bg:      rgba(99, 102, 241, 0.04);
+  --table-head-bg: #f4f4f8;
+
+  /* Texto */
+  --text:          #6b7280;
+  --text-h:        #111827;
+
+  /* Bordas e sombras */
+  --border:        #e5e7eb;
+  --shadow:        0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-lg:     0 10px 25px rgba(0,0,0,0.12), 0 4px 10px rgba(0,0,0,0.06);
+
+  /* Tipografia */
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  color-scheme: light dark;
+}
+
+/* ─── Design Tokens — Modo Escuro ────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent:        #818cf8;
+    --accent-hover:  #6366f1;
+    --accent-bg:     rgba(129, 140, 248, 0.12);
+    --accent-border: rgba(129, 140, 248, 0.4);
+
+    --bg:            #0f1117;
+    --card-bg:       #1a1d27;
+    --sidebar-bg:    #13151f;
+    --input-bg:      #1a1d27;
+    --hover-bg:      rgba(129, 140, 248, 0.06);
+    --table-head-bg: #161920;
+
+    --text:          #9ca3af;
+    --text-h:        #f9fafb;
+
+    --border:        #2a2d3a;
+    --shadow:        0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-lg:     0 10px 25px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.3);
+  }
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  color: var(--text-h);
+}
+
+p { margin: 0; }
+
+/* ─── Botões ─────────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5625rem 1.125rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primario {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primario:hover:not(:disabled) {
+  background: var(--accent-hover);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+}
+
+.btn-secundario {
+  background: var(--card-bg);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+}
+
+.btn-secundario:hover:not(:disabled) {
+  background: var(--hover-bg);
+  border-color: var(--accent-border);
+}
+
+/* ─── Inputs globais ─────────────────────────────────────────────────────────── */
+input[type="text"],
+input[type="number"],
+input[type="search"],
+textarea,
+select,
+.form-input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-h);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* ─── Badges ─────────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge-ativo {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.badge-inativo {
+  background: rgba(107, 114, 128, 0.1);
+  color: var(--text);
+  border: 1px solid rgba(107, 114, 128, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge-ativo {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+}

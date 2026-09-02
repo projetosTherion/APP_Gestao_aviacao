@@ -17,15 +17,24 @@ app.use("/uploads", express.static("uploads")); // serve os arquivos de logo env
 
 // Conecta ao banco
 connectDB();
+// ─── Middlewares globais ───────────────────────────────────────────────────────
+app.use(cors());
+app.use(express.json());
 
-// Porta configurável via .env
-const PORT = process.env.PORT || 4000;
+// ─── Rotas ────────────────────────────────────────────────────────────────────
+const servicosRoutes = require("./src/routes/servicos.routes");
+// Sprint 3 — adicionar aqui:
+// const clientesRoutes  = require("./src/routes/clientes.routes");
+// const pedidosRoutes   = require("./src/routes/pedidos.routes");
 
 // Rotas da aplicação
 const pedidosRoutes = require("./src/routes/pedidosRoutes");
 const clientesRoutes = require("./src/routes/clientesRoutes");
 
 // Rota inicial só para teste de status
+app.use("/api/servicos", servicosRoutes);
+
+// Rota de health check
 app.get("/", (req, res) => {
   res.json({ status: "✅ Backend rodando com sucesso" });
 });
@@ -40,6 +49,12 @@ app.use("/api/pedidos", pedidosRoutes);
 app.use("/api/clientes", clientesRoutes);
 
 // Inicia servidor
+// ─── Middleware global de erros (deve ser o último) ────────────────────────────
+const errorHandler = require("./src/middlewares/errorHandler");
+app.use(errorHandler);
+
+// ─── Inicia servidor ───────────────────────────────────────────────────────────
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
