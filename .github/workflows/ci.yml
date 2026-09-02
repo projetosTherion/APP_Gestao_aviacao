@@ -38,3 +38,4 @@ jobs:
           cache-dependency-path: back/package-lock.json
       - run: npm ci
       - run: node --check index.js
+      - run: npm test
