@@ -6,13 +6,11 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-<<<<<<< HEAD
-    "test": "node --test"
-=======
+
+    "test": "node --test",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio"
->>>>>>> b0753ea (feat: implementa módulo de Serviços — Sprint 2 (CRUD completo back + front))
   },
   "keywords": [],
   "author": "",

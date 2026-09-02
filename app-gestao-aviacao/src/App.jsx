@@ -39,37 +39,38 @@ export default function App() {
     </BrowserRouter>
 import { Outlet, NavLink } from "react-router-dom";
 import "./App.css";
+import ServicosPage from './pages/Servicos/ServicosPage';
 
 export default function App() {
   return (
-    <div className="app-layout">
-      {/* Sidebar */}
-      <aside className="sidebar">
-        <div className="sidebar-marca">
-          <span className="sidebar-logo">✈️</span>
-          <span className="sidebar-nome">Therion</span>
-        </div>
-        <nav className="sidebar-nav">
-          <NavLink
-            to="/servicos"
-            className={({ isActive }) =>
-              `nav-link ${isActive ? "nav-link--ativo" : ""}`
-            }
-            id="nav-servicos"
-          >
-            🛠️ Serviços
-          </NavLink>
-          {/* Sprint 3 — adicionar:
-          <NavLink to="/clientes" className={...}>👤 Clientes</NavLink>
-          <NavLink to="/pedidos"  className={...}>📋 Pedidos</NavLink>
-          */}
-        </nav>
-      </aside>
+    <BrowserRouter>
+      <AuthProvider>
+        <Routes>
+          {/* Rotas públicas */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
 
-      {/* Conteúdo principal */}
-      <main className="main-content">
-        <Outlet />
-      </main>
-    </div>
+          {/* Rotas protegidas (com sidebar/topbar do AppLayout) */}
+          <Route element={<RotaProtegida />}>
+            <Route element={<AppLayout />}>
+              <Route path="/configurar-empresa" element={<ConfigEmpresa />} />
+
+              {/* Clientes (Dupla 1 - Sprint 2) */}
+              <Route path="/clientes" element={<Clientes />} />
+              <Route path="/clientes/novo" element={<ClienteForm />} />
+              <Route path="/clientes/:id" element={<ClienteDetalhe />} />
+              <Route path="/clientes/:id/editar" element={<ClienteForm />} />
+
+              {/* Serviços (Sprint 2 — Therion) */}
+              <Route path="/servicos" element={<ServicosPage />} />
+            </Route>
+          </Route>
+
+          {/* Redirect raiz */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }

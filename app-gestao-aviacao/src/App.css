@@ -101,4 +101,14 @@
   .nav-link {
     white-space: nowrap;
   }
+/* App.css — estilos do layout da sidebar (módulo Serviços).
+   O restante do projeto usa Tailwind (index.css). */
+
+/* ── Sidebar do módulo Serviços (fallback sem Tailwind) ──────────────────────── */
+.page {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }

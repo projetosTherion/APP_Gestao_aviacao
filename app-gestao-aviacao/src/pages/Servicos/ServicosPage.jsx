@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import Badge from "../../components/ui/Badge";
+import { BadgeAtivo as Badge } from "../../components/ui/Badge";
 import ServicoModal from "../../components/Servicos/ServicoModal";
 import {
   listarServicos,
