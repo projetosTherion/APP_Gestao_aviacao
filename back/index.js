@@ -21,6 +21,9 @@ connectDB();
 // Porta configurável via .env
 const PORT = process.env.PORT || 4000;
 
+// Rotas da aplicação
+const pedidosRoutes = require("./src/routes/pedidosRoutes");
+
 // Rota inicial só para teste de status
 app.get("/", (req, res) => {
   res.json({ status: "✅ Backend rodando com sucesso" });
@@ -29,6 +32,8 @@ app.get("/", (req, res) => {
 // Rotas da aplicação
 app.use("/api/auth", authRoutes); // POST /api/auth/cadastro, POST /api/auth/login
 app.use("/api", empresaRoutes); // GET/PUT /api/empresa
+// Registra rotas de Pedidos (Dupla 3 - Sprint 2 Groundwork)
+app.use("/api/pedidos", pedidosRoutes);
 
 // Inicia servidor
 app.listen(PORT, () => {
