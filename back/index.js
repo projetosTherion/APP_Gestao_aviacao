@@ -7,19 +7,29 @@ dotenv.config();
 
 const app = express();
 
-// Middlewares
-app.use(cors()); // libera acesso do frontend
-app.use(express.json()); // permite JSON no body
+// ─── Middlewares globais ───────────────────────────────────────────────────────
+app.use(cors());
+app.use(express.json());
 
-// Porta configurável via .env
-const PORT = process.env.PORT || 4000;
+// ─── Rotas ────────────────────────────────────────────────────────────────────
+const servicosRoutes = require("./src/routes/servicos.routes");
+// Sprint 3 — adicionar aqui:
+// const clientesRoutes  = require("./src/routes/clientes.routes");
+// const pedidosRoutes   = require("./src/routes/pedidos.routes");
 
-// Rota inicial só para teste de status
+app.use("/api/servicos", servicosRoutes);
+
+// Rota de health check
 app.get("/", (req, res) => {
   res.json({ status: "✅ Backend rodando com sucesso" });
 });
 
-// Inicia servidor
+// ─── Middleware global de erros (deve ser o último) ────────────────────────────
+const errorHandler = require("./src/middlewares/errorHandler");
+app.use(errorHandler);
+
+// ─── Inicia servidor ───────────────────────────────────────────────────────────
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
 });
