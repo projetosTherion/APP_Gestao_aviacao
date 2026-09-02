@@ -1,0 +1,7 @@
+fix: ajustes de ambiente e dependencias para rodar o backend local
+
+- Atualiza o PrismaClient para v7 usando @prisma/adapter-pg e pg
+- Atualiza a porta do PostgreSQL no .env para 5433 (nova instalacao)
+- Instala dependencias da branch dev que nao estavam no package.json (mongoose, bcryptjs, jsonwebtoken)
+- Comenta temporariamente o process.exit(1) no config/db.js para permitir que o backend rode sem MongoDB local
+- Gera a primeira migration do Prisma para a tabela de Servicos
