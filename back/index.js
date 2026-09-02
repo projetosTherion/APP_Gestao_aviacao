@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 4000;
 
 // Rotas da aplicação
 const pedidosRoutes = require("./src/routes/pedidosRoutes");
+const clientesRoutes = require("./src/routes/clientesRoutes");
 
 // Rota inicial só para teste de status
 app.get("/", (req, res) => {
@@ -24,6 +25,9 @@ app.get("/", (req, res) => {
 
 // Registra rotas de Pedidos (Dupla 3 - Sprint 2 Groundwork)
 app.use("/api/pedidos", pedidosRoutes);
+
+// Registra rotas de Clientes (Dupla 1 - Sprint 2)
+app.use("/api/clientes", clientesRoutes);
 
 // Inicia servidor
 app.listen(PORT, () => {
