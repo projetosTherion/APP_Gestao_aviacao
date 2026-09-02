@@ -11,4 +11,7 @@ Antes da Sprint 5, confirmar e registrar por escrito para Orçamento, Fatura e O
 - local/campo de assinatura;
 - regra de aprovação para alterações futuras de layout ou conteúdo.
 
+> [!NOTE]
+> **Status (Sprint 2)**: O contato com o cliente foi realizado, porém a coleta das diretrizes visuais está temporariamente postergada devido à indisponibilidade do cliente. A equipe prosseguirá com o desenvolvimento utilizando layouts padrão até o envio do material.
+
 Nenhum layout de PDF deve ser considerado aprovado sem retorno explícito do cliente.
