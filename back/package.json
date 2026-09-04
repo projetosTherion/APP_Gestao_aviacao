@@ -6,10 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-<<<<<<< HEAD
 
-=======
->>>>>>> 640d4eac854215cabfbaecbed7044e41d6a1ff7f
     "test": "node --test",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
