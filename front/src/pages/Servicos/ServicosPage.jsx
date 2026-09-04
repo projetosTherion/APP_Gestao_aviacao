@@ -38,11 +38,15 @@ export default function ServicosPage() {
     }
   }, [filtroAtivo, busca]);
 
+<<<<<<< HEAD:front/src/pages/Servicos/ServicosPage.jsx
   // Busca ao montar e sempre que o filtro/busca mudar (padrão fetch-on-mount).
   // Suprimido de propósito: não há estado externo para sincronizar aqui além
   // da resposta da API.
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
+=======
+  useEffect(() => {
+>>>>>>> 640d4eac854215cabfbaecbed7044e41d6a1ff7f:app-gestao-aviacao/src/pages/Servicos/ServicosPage.jsx
     fetchServicos();
   }, [fetchServicos]);
 

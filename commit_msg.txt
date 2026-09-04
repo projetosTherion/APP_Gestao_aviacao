@@ -1,0 +1,8 @@
+merge: integra Sprint 2 com branch dev da equipe
+
+- Mantem estrutura da equipe: Auth, AppLayout, Tailwind, Clientes, Pedidos
+- Adiciona rota /servicos dentro do AppLayout protegido
+- Unifica index.css: Tailwind + CSS vars do modulo Servicos
+- Unifica Badge.jsx: mantém variante Tailwind + exporta BadgeAtivo
+- Integra back/index.js: adiciona /api/servicos e errorHandler
+- Merge de package.json (front e back) sem perda de dependencias

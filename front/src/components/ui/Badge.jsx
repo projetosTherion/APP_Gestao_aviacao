@@ -5,7 +5,14 @@
  * Props:
  * - variant: 'neutral' | 'info' | 'success' | 'warning' | 'error'
  * - children: conteúdo do badge
+<<<<<<< HEAD:front/src/components/ui/Badge.jsx
+=======
+ *
+ * Uso rápido para status ativo/inativo:
+ * - <BadgeAtivo ativo={true} />
+>>>>>>> 640d4eac854215cabfbaecbed7044e41d6a1ff7f:app-gestao-aviacao/src/components/ui/Badge.jsx
  */
+
 const variants = {
   neutral: 'bg-border/60 text-content-muted',
   info: 'bg-primary/15 text-primary',

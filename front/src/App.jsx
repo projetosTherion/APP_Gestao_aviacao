@@ -24,6 +24,11 @@ export default function App() {
               <Route path="/clientes/novo" element={<ClienteForm />} />
               <Route path="/clientes/:id" element={<ClienteDetalhe />} />
               <Route path="/clientes/:id/editar" element={<ClienteForm />} />
+<<<<<<< HEAD:front/src/App.jsx
+=======
+
+              {/* Serviços (Sprint 2 — Therion) */}
+>>>>>>> 640d4eac854215cabfbaecbed7044e41d6a1ff7f:app-gestao-aviacao/src/App.jsx
               <Route path="/servicos" element={<ServicosPage />} />
             </Route>
           </Route>
