@@ -7,10 +7,13 @@
  */
 function errorHandler(err, req, res, next) {
   // Erros de validação do Zod
+  // Zod v4 expõe os problemas em `err.issues` (em v3 era `err.errors`).
+  // Mantemos os dois por segurança, com issues tendo prioridade.
   if (err.name === "ZodError") {
+    const problemas = err.issues || err.errors || [];
     return res.status(400).json({
       erro: "Dados inválidos",
-      detalhes: err.errors.map((e) => ({
+      detalhes: problemas.map((e) => ({
         campo: e.path.join("."),
         mensagem: e.message,
       })),

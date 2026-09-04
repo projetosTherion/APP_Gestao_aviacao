@@ -3,7 +3,10 @@ const { z } = require("zod");
 // ─── Schema de criação ────────────────────────────────────────────────────────
 const criarServicoSchema = z.object({
   nome: z
-    .string({ required_error: "Nome é obrigatório" })
+    .string({
+      error: (issue) =>
+        issue.input === undefined ? "Nome é obrigatório" : "Nome deve ser um texto",
+    })
     .min(2, "Nome deve ter no mínimo 2 caracteres")
     .max(100, "Nome deve ter no máximo 100 caracteres")
     .trim(),
@@ -16,7 +19,10 @@ const criarServicoSchema = z.object({
     .nullable(),
 
   preco: z
-    .number({ required_error: "Preço é obrigatório", invalid_type_error: "Preço deve ser um número" })
+    .number({
+      error: (issue) =>
+        issue.input === undefined ? "Preço é obrigatório" : "Preço deve ser um número",
+    })
     .positive("Preço deve ser maior que zero")
     .multipleOf(0.01, "Preço deve ter no máximo 2 casas decimais"),
 });
@@ -27,7 +33,9 @@ const atualizarServicoSchema = criarServicoSchema.partial();
 
 // ─── Schema de toggle de ativo ────────────────────────────────────────────────
 const toggleAtivoSchema = z.object({
-  ativo: z.boolean({ required_error: "Campo 'ativo' é obrigatório e deve ser boolean" }),
+  ativo: z.boolean({
+    error: "Campo 'ativo' é obrigatório e deve ser boolean",
+  }),
 });
 
 module.exports = {

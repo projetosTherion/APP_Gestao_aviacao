@@ -1,3 +1,6 @@
+/* ─── Google Fonts (precisa vir antes de tudo, exceto @charset) ─────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,40 +48,6 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #4B5563;
   }
-}
-/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-
-@layer base {
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    font-family: 'Inter', system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    background-color: #111827;
-    color: #F9FAFB;
-    min-height: 100vh;
-  }
-
-  #root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Scrollbar customizada para dark mode */
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: #1F2937; }
-  ::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #4B5563; }
 }
 
 /* ─── CSS Variables — usadas pelo módulo Serviços ───────────────────────────── */

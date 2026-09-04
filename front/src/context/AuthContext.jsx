@@ -1,15 +1,11 @@
-import { createContext, useState } from 'react';
+import { useState } from 'react';
 import {
   login as serviceLogin,
   cadastrar as serviceCadastrar,
   logout as serviceLogout,
   getSessaoSalva,
 } from '../services/authService';
-
-// ─────────────────────────────────────────────
-// Contexto
-// ─────────────────────────────────────────────
-const AuthContext = createContext(null);
+import { AuthContext } from './authContextObject';
 
 // ─────────────────────────────────────────────
 // Provider
@@ -67,5 +63,3 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-
-export { AuthContext };

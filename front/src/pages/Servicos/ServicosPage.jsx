@@ -38,7 +38,11 @@ export default function ServicosPage() {
     }
   }, [filtroAtivo, busca]);
 
+  // Busca ao montar e sempre que o filtro/busca mudar (padrão fetch-on-mount).
+  // Suprimido de propósito: não há estado externo para sincronizar aqui além
+  // da resposta da API.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchServicos();
   }, [fetchServicos]);
 
